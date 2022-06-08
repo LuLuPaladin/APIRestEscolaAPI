@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EstudoAPI.Application\EstudoAPI.Application.csproj" />
+    <ProjectReference Include="..\EstudoAPI.Data\EstudoAPI.Data.csproj" />
+    <ProjectReference Include="..\EstudoAPI.Domain\EstudoAPI.Domain.csproj" />
+  </ItemGroup>
+
+
+
+</Project>

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "yhkrmNCBWTlebhi2Buw75f7s76AAUyDzcZxudFP9m1B6lUXaOqwIVnyMdwLStMxDYCVthOdYh316mVxXb+HUwg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\lucia\\OneDrive\\Área de Trabalho\\EscolaAPI\\EstudoAPI\\EstudoAPI.Domain\\EstudoAPI.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lucia\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\lucia\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

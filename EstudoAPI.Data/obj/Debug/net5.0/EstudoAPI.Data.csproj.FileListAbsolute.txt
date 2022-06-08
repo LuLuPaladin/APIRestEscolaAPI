@@ -1,0 +1,15 @@
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Data\bin\Debug\net5.0\EstudoAPI.Data.deps.json
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Data\bin\Debug\net5.0\EstudoAPI.Data.dll
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Data\bin\Debug\net5.0\ref\EstudoAPI.Data.dll
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Data\bin\Debug\net5.0\EstudoAPI.Data.pdb
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Data\bin\Debug\net5.0\EstudoAPI.Domain.dll
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Data\bin\Debug\net5.0\EstudoAPI.Domain.pdb
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Data\obj\Debug\net5.0\EstudoAPI.Data.csproj.AssemblyReference.cache
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Data\obj\Debug\net5.0\EstudoAPI.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Data\obj\Debug\net5.0\EstudoAPI.Data.AssemblyInfoInputs.cache
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Data\obj\Debug\net5.0\EstudoAPI.Data.AssemblyInfo.cs
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Data\obj\Debug\net5.0\EstudoAPI.Data.csproj.CoreCompileInputs.cache
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Data\obj\Debug\net5.0\EstudoAPI.Data.csproj.CopyComplete
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Data\obj\Debug\net5.0\EstudoAPI.Data.dll
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Data\obj\Debug\net5.0\ref\EstudoAPI.Data.dll
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Data\obj\Debug\net5.0\EstudoAPI.Data.pdb

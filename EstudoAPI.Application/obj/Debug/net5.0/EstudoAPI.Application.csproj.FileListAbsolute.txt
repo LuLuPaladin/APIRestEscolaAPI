@@ -1,0 +1,17 @@
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\bin\Debug\net5.0\EstudoAPI.Application.deps.json
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\bin\Debug\net5.0\EstudoAPI.Application.dll
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\bin\Debug\net5.0\ref\EstudoAPI.Application.dll
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\bin\Debug\net5.0\EstudoAPI.Application.pdb
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\bin\Debug\net5.0\EstudoAPI.Data.dll
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\bin\Debug\net5.0\EstudoAPI.Domain.dll
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\bin\Debug\net5.0\EstudoAPI.Data.pdb
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\bin\Debug\net5.0\EstudoAPI.Domain.pdb
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\obj\Debug\net5.0\EstudoAPI.Application.csproj.AssemblyReference.cache
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\obj\Debug\net5.0\EstudoAPI.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\obj\Debug\net5.0\EstudoAPI.Application.AssemblyInfoInputs.cache
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\obj\Debug\net5.0\EstudoAPI.Application.AssemblyInfo.cs
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\obj\Debug\net5.0\EstudoAPI.Application.csproj.CoreCompileInputs.cache
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\obj\Debug\net5.0\EstudoAPI.Application.csproj.CopyComplete
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\obj\Debug\net5.0\EstudoAPI.Application.dll
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\obj\Debug\net5.0\ref\EstudoAPI.Application.dll
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EstudoAPI.Application\obj\Debug\net5.0\EstudoAPI.Application.pdb
