@@ -31,16 +31,16 @@ namespace EscolaAPI.Controllers
         }
 
         [HttpGet("ObterBoletimEscolarID/{idBoletimEscolar}")]
-        public ActionResult<BoletimEscolar> ObterBoletimEscolarId(int idBoletimEscolar)
+        public ActionResult<BoletimEscolarResponseDTO> ObterBoletimEscolarId(int idBoletimEscolar)
         {
-            BoletimEscolar boletimEscolar = _boletimEscolarService.ObterBoletimEscolar(idBoletimEscolar);
+            BoletimEscolarResponseDTO boletimEscolarDTO = _boletimEscolarService.ObterBoletimEscolar(idBoletimEscolar);
 
-            if (boletimEscolar is null)
+            if (boletimEscolarDTO is null)
             {
                 return BadRequest();
             }
 
-            return Ok(boletimEscolar);
+            return Ok(boletimEscolarDTO);
         }
 
         [HttpPost]
@@ -84,6 +84,19 @@ namespace EscolaAPI.Controllers
             }
 
             return BadRequest();
+        }
+
+        [HttpGet("ObterBoletinsAssociadoAoAluno/{idAluno}")]
+        public ActionResult<BoletimEscolar>  ObterBoletinsAluno(int idAluno)
+        {
+            var boletins = _boletimEscolarService.ObterBoletinsAluno(idAluno);
+
+            if (boletins is null)
+            {
+                return BadRequest();
+            }
+
+            return Ok(boletins);
         }
     }
 }

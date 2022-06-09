@@ -46,7 +46,7 @@ namespace EstudoAPI.Data.Repositories
                                                                  p.Nome
                                                              FROM Professor p 
                                                              INNER JOIN
-                                                                 Aluno_Professor ap on ap.IdAluno = @idAluno;", connection);
+                                                                 Aluno_Professor ap on ap.IdAluno = @idAluno", connection);
                     sqlCommand.CommandType = CommandType.Text;
                     sqlCommand.Parameters.AddWithValue("@idAluno", idAluno);
                     connection.Open();

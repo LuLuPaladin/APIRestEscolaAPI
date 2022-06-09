@@ -1,7 +1,9 @@
-﻿using EstudoAPI.Domain.DTOs;
+﻿using EstudoAPI.Application.Adapters;
+using EstudoAPI.Domain.DTOs;
 using EstudoAPI.Domain.Entities;
 using EstudoAPI.Domain.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace EstudoAPI.Application.Services
@@ -115,11 +117,31 @@ namespace EstudoAPI.Application.Services
             }
         }
 
-        public BoletimEscolar ObterBoletimEscolar(int idBoletimEscolar)
+        public BoletimEscolarResponseDTO ObterBoletimEscolar(int idBoletimEscolar)
         {
             
             BoletimEscolar boletimEscolar = _boletimEscolarRepository.ObterBoletimEscolar(idBoletimEscolar);
-            return boletimEscolar;
+            return boletimEscolar.ToDTO();
+        }
+
+        public List<BoletimEscolarResponseDTO> ObterBoletinsAluno(int idAluno)
+        {
+            try
+            {
+                List<BoletimEscolar> listaBoletins = _boletimEscolarRepository.ObterBoletinsAluno(idAluno);
+
+                if (listaBoletins == null)
+                {
+                    return null;
+                }
+
+                return listaBoletins.ToDTO();
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
     }
 }

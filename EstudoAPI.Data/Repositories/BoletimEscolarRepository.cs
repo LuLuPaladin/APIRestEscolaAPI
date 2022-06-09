@@ -2,6 +2,7 @@
 using EstudoAPI.Domain.Interfaces;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
@@ -110,7 +111,7 @@ namespace EstudoAPI.Data.Repositories
                     connection.Open();
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
                     BoletimEscolar boletimEscolar = null;
-                  
+
                     while (sqlDataReader.Read())
                     {
                         boletimEscolar = new BoletimEscolar
@@ -167,6 +168,60 @@ namespace EstudoAPI.Data.Repositories
                 connection.Open();
                 sqlCommand.ExecuteNonQuery();
                 connection.Close();
+            }
+        }
+
+        public List<BoletimEscolar> ObterBoletinsAluno(int idAluno)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand(@" SELECT b.DataNota, b.DescricaoBoletimEscolar, b.NotaBoletimEscolar, a.IdAluno,
+                                                          a.Nome as Nome_do_Aluno,
+                                                          p.Nome as Nome_do_Professor, p.IdProfessor,
+                                                          d.Nome as Nome_da_Disciplina, d.IdDisciplina
+                                                          FROM BoletimEscolar b
+                                                          INNER JOIN Disciplina d ON b.IdDisciplina = d.IdDisciplina
+                                                          INNER JOIN Aluno a ON b.IdAluno = a.IdAluno
+                                                          INNER JOIN Professor p ON b.IdProfessor = p.IdProfessor
+                                                          WHERE b.IdAluno = @idAluno", sqlConnection);
+
+                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.Parameters.AddWithValue("@idAluno", idAluno);
+                sqlConnection.Open();
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                List<BoletimEscolar> boletimEscolar = new List<BoletimEscolar>();
+
+                while (sqlDataReader.Read())
+                {
+                    boletimEscolar.Add(new BoletimEscolar
+                    {
+                        DescricaoBoletimEscolar = sqlDataReader["DescricaoBoletimEscolar"].ToString(),
+                        NotaBoletimEscolar = Convert.ToInt32(sqlDataReader["NotaBoletimEscolar"]),
+                        DataNota = DateTime.Parse(sqlDataReader["DataNota"].ToString()),
+
+                        Aluno = new Aluno
+                        {
+                            Nome = sqlDataReader["Nome_do_Aluno"].ToString(),
+                            IdAluno = Convert.ToInt32(sqlDataReader["IdAluno"])
+                        },
+
+                        Professor = new Professor
+                        {
+                            Nome = sqlDataReader["Nome_do_Professor"].ToString(),
+                            IdProfessor = Convert.ToInt32(sqlDataReader["IdProfessor"])
+                        },
+
+                        Disciplina = new Disciplina
+                        {
+                            Nome = sqlDataReader["Nome_da_Disciplina"].ToString(),
+                            IdDisciplina = Convert.ToInt32(sqlDataReader["IdDisciplina"])
+                        }
+                    }
+                    );
+                }
+
+                sqlConnection.Close();
+                return boletimEscolar;
             }
         }
     }
