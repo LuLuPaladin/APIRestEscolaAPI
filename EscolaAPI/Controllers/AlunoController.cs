@@ -21,6 +21,19 @@ namespace EscolaAPI.Controllers
             _professorService = professorService;
         }
 
+        [HttpGet("ObterAlunos")]
+        public ActionResult<List<AlunoDTO>> ObterAlunos()
+        {
+            var alunos = _alunoService.ObterAlunos();
+
+            if (alunos == null)
+            {
+                return BadRequest();
+            }
+
+            return Ok(alunos);
+        }
+
         [HttpGet("{idAluno}")]
         public ActionResult<Aluno> ObterAlunoId(int idAluno)
         {
@@ -35,7 +48,7 @@ namespace EscolaAPI.Controllers
         }
 
         [HttpPost("Cadastrar")]
-        public ActionResult<Aluno> CadastrarAluno([FromBody] AlunoDTO alunoDTO)
+        public ActionResult CadastrarAluno([FromBody] AlunoDTO alunoDTO)
         {
 
             var alunResponse = _alunoService.CadastrarAluno(alunoDTO);
@@ -62,7 +75,7 @@ namespace EscolaAPI.Controllers
         }
 
         [HttpDelete("Deletar/{idAluno}")]
-        public ActionResult Delete(int idAluno)
+        public ActionResult DeletarAluno(int idAluno)
         {
             bool alunResponse = _alunoService.DeletarAluno(idAluno);
 
@@ -73,6 +86,9 @@ namespace EscolaAPI.Controllers
 
             return BadRequest();
         }
+
+
+
 
 
     }

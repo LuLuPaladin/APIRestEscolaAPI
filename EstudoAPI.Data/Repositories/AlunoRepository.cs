@@ -169,7 +169,30 @@ namespace EstudoAPI.Data.Repositories
             }
         }
 
+        public List<Aluno> ObterAlunos()
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
+            {
+                SqlCommand sqlCommand = new SqlCommand(@"SELECT a.IdAluno, a.Nome as NomeDoAluno 
+                                                         FROM Aluno a", sqlConnection);
+                sqlCommand.CommandType = CommandType.Text;
+                sqlConnection.Open();
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                List<Aluno> aluno = new List<Aluno>();
 
+
+                while (sqlDataReader.Read())
+                {
+                    aluno.Add(new Aluno
+                    {
+                        IdAluno = Convert.ToInt32(sqlDataReader["IdAluno"]),
+                        Nome = sqlDataReader["NomeDoAluno"].ToString()
+                    });
+                }
+                sqlConnection.Close();
+                return aluno;
+            }
+        }
     }
 }
 

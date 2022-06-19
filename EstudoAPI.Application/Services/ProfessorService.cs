@@ -1,4 +1,5 @@
-﻿using EstudoAPI.Domain.DTOs;
+﻿using EstudoAPI.Application.Adapters;
+using EstudoAPI.Domain.DTOs;
 using EstudoAPI.Domain.Entities;
 using EstudoAPI.Domain.Interfaces;
 using System;
@@ -131,7 +132,7 @@ namespace EstudoAPI.Application.Services
 
                 foreach (var prof in professores)
                 {
-                    professoresDTO.Add(new ProfessorResponseDTO { Nome = prof.Nome, Disciplina = prof.Disciplina.Nome });
+                    professoresDTO.Add(prof.ToProfessorResponseDTO());
                     
                 }
                 return professoresDTO;
