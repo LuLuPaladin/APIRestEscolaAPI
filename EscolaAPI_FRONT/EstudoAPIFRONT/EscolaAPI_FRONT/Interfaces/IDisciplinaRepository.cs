@@ -1,14 +1,15 @@
 ﻿using EscolaAPI_FRONT.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EscolaAPI_FRONT.Interfaces
 {
     public interface IDisciplinaRepository
     {
-        List<Disciplina> ObterDisciplinas();
-        void CadastrarDisciplina(Disciplina disciplina);
-        Disciplina ObterDisciplinaId(int idDisciplina);
-        void EditarDisciplina(Disciplina disciplina);
-        void DeletarDisciplina(int idDisciplina);
+        Task<List<Disciplina>> ObterDisciplinas();
+        Task<bool> CadastrarDisciplina(Disciplina disciplina);
+        Task<Disciplina> ObterDisciplinaId(int idDisciplina);
+        Task<bool> EditarDisciplina(Disciplina disciplina);
+        Task<bool> DeletarDisciplina(int idDisciplina);
     }
 }

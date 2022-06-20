@@ -17,7 +17,7 @@ namespace EscolaAPI.Controllers
             _disciplinaService = disciplinaService;
         }
 
-        [HttpGet("{idDisciplina}")]
+        [HttpGet("ObterDisciplina/{idDisciplina}")]
         public ActionResult<Disciplina> ObterDisciplinaId(int idDisciplina)
         {
             Disciplina disciplina = _disciplinaService.ObterDisciplina(idDisciplina);
@@ -30,7 +30,7 @@ namespace EscolaAPI.Controllers
             return Ok(disciplina);
         }
 
-        [HttpPost]
+        [HttpPost("CadastrarDisciplina")]
         public ActionResult CadastrarDisciplina([FromBody] DisciplinaDTO disciplinaDTO)
         {
             var discResponse = _disciplinaService.CadastrarDisciplina(disciplinaDTO);
@@ -42,7 +42,7 @@ namespace EscolaAPI.Controllers
             return BadRequest();
         }
 
-        [HttpPut("{idDisciplina}")]
+        [HttpPut("EditarDisciplina/{idDisciplina}")]
         public ActionResult EditarDisciplina(int idDisciplina, [FromBody] DisciplinaDTO disciplinaDTO)
         {
             var discResponse = _disciplinaService.EditarDisciplina(idDisciplina, disciplinaDTO);
@@ -56,7 +56,7 @@ namespace EscolaAPI.Controllers
             return BadRequest();
         }
 
-        [HttpDelete("{idDisciplina}")]
+        [HttpDelete("DeletarDisciplina/{idDisciplina}")]
         public ActionResult DeletarDisciplina(int idDisciplina)
         {
             bool discResponse = _disciplinaService.DeletarDisciplina(idDisciplina);

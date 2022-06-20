@@ -31,8 +31,8 @@ namespace EscolaAPI_FRONT.Repository
             using (var client = new HttpClient())
             {
                 string jsonObjeto = JsonSerializer.Serialize(alunoDTO);
-                var conteudo = new StringContent(jsonObjeto, Encoding.UTF8, "application/json");
-                var resposta = await client.PostAsync(_urlAPI + "CadastrarAluno", conteudo);
+                StringContent conteudo = new StringContent(jsonObjeto, Encoding.UTF8, "application/json");
+                HttpResponseMessage resposta = await client.PostAsync(_urlAPI + "CadastrarAluno", conteudo);
 
                 if (resposta.IsSuccessStatusCode)
                 {
@@ -77,22 +77,28 @@ namespace EscolaAPI_FRONT.Repository
 
         public async Task<Aluno> ObterAlunoId(int idAluno)
         {
-            using (var client = new HttpClient())
+            try
             {
-
-
-                Aluno aluno = null;
-                var resposta = await client.GetAsync(_urlAPI + idAluno);
-
-
-                if (resposta.IsSuccessStatusCode)
+                using (var client = new HttpClient())
                 {
-                    var test = await resposta.Content.ReadAsStringAsync();
-                    aluno = JsonSerializer.Deserialize<Aluno>(test);
-                }
+                    Aluno aluno = null;
+                    var resposta = await client.GetAsync(_urlAPI + idAluno);
 
-                return aluno;
+
+                    if (resposta.IsSuccessStatusCode)
+                    {
+                        var test = await resposta.Content.ReadAsStringAsync();
+                        aluno = JsonSerializer.Deserialize<Aluno>(test);
+                    }
+                    return aluno;
+                }
             }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
+
         }
 
         public async Task<List<AlunoDTO>> ObterAlunos()
@@ -101,10 +107,10 @@ namespace EscolaAPI_FRONT.Repository
             {
                 using (var client = new HttpClient())
                 {
-                    var resposta = await client.GetAsync(_urlAPI + "ObterAlunos");
-                    var test = await resposta.Content.ReadAsStringAsync();
+                    HttpResponseMessage resposta = await client.GetAsync(_urlAPI + "ObterAlunos");
+                    string conteudo = await resposta.Content.ReadAsStringAsync();
 
-                    List<Aluno> alunos = JsonSerializer.Deserialize<List<Aluno>>(test).ToList();
+                    List<Aluno> alunos = JsonSerializer.Deserialize<List<Aluno>>(conteudo).ToList();
                     return alunos.ToListAlunosDTO();
                 }
             }

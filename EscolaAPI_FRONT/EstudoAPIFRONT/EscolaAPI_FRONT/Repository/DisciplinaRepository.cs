@@ -1,151 +1,103 @@
 ﻿using EscolaAPI_FRONT.Interfaces;
 using EscolaAPI_FRONT.Models;
-using Newtonsoft.Json;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace EscolaAPI_FRONT.Repository
 {
     public class DisciplinaRepository : IDisciplinaRepository
     {
-        private readonly string urlAPI = "http://localhost:3163/api/Disciplina/";
 
-        public void CadastrarDisciplina(Disciplina disciplina)
+        private readonly string _urlAPI;
+
+        public DisciplinaRepository(IConfiguration configuration)
         {
-            try
-            {
-                var disciplinaCriada = new Disciplina();
+            _urlAPI = configuration["UrlAPI"] + "Disciplina/";
+        }
 
-                using (var client = new HttpClient())
+        public async Task<bool> CadastrarDisciplina(Disciplina disciplina)
+        {
+            using (var client = new HttpClient())
+            {
+                string JsonObjeto = JsonSerializer.Serialize(disciplina);
+                StringContent conteudo = new StringContent(JsonObjeto, Encoding.UTF8, "application/json");
+                HttpResponseMessage resposta = await client.PostAsync(_urlAPI + "CadastrarDisciplina", conteudo);
+
+                if (resposta.IsSuccessStatusCode)
                 {
-                    string jsonObjeto = JsonConvert.SerializeObject(disciplina);
-                    var conteudo = new StringContent(jsonObjeto, Encoding.UTF8, "application/json");
-                    var resposta = client.PostAsync(urlAPI + "CadastrarDisciplina", conteudo);
-                    resposta.Wait();
-                    if (resposta.Result.IsSuccessStatusCode)
-                    {
-                        var retorno = resposta.Result.Content.ReadAsStringAsync();
-                        disciplinaCriada = JsonConvert.DeserializeObject<Disciplina>(retorno.Result);
-                    }
+                    return true;
                 }
-            }
-            catch (Exception e)
-            {
-
-                throw new Exception(e.Message);
+                return false;
             }
         }
 
-        public void DeletarDisciplina(int idDisciplina)
+        public async Task<bool> DeletarDisciplina(int idDisciplina)
         {
-            var disciplinaCriada = new Disciplina();
-            disciplinaCriada.IdDisciplina = idDisciplina;
-            try
+            using (var cliente = new HttpClient())
             {
-                
+                HttpResponseMessage resposta = await cliente.DeleteAsync(_urlAPI + "DeletarDIsciplina");
 
-                using (var client = new HttpClient())
+                if (resposta.IsSuccessStatusCode)
                 {
-                    string jsonObjeto = JsonConvert.SerializeObject(disciplinaCriada);
-                    var conteudo = new StringContent(jsonObjeto, Encoding.UTF8, "application/json");
-                    var resposta = client.PostAsync(urlAPI + "DeletarDisciplina", conteudo);
-                    resposta.Wait();
-                    if (resposta.Result.IsSuccessStatusCode)
-                    {
-                        var retorno = resposta.Result.Content.ReadAsStringAsync();
-                        disciplinaCriada = JsonConvert.DeserializeObject<Disciplina>(retorno.Result);
-                    }
+                    return true;
                 }
-            }
-            catch (Exception e)
-            {
-
-                throw new Exception(e.Message);
+                return false;
             }
         }
 
-        public void EditarDisciplina(Disciplina disciplina)
+        public async Task<bool> EditarDisciplina(Disciplina disciplina)
         {
-            var disciplinaCriada = new Disciplina();
-            try
+            using (HttpClient cliente = new HttpClient())
             {
+                string JsonObjeto = JsonSerializer.Serialize(disciplina);
+                StringContent conteudo = new StringContent(JsonObjeto, Encoding.UTF8, "application/json");
+                HttpResponseMessage resposta = await cliente.PutAsync(_urlAPI + "EditarDisciplina/" + disciplina.IdDisciplina, conteudo);
 
-
-                using (var client = new HttpClient())
+                if (resposta.IsSuccessStatusCode)
                 {
-                    string jsonObjeto = JsonConvert.SerializeObject(disciplinaCriada);
-                    var conteudo = new StringContent(jsonObjeto, Encoding.UTF8, "application/json");
-                    var resposta = client.PostAsync(urlAPI + "DeletarDisciplina", conteudo);
-                    resposta.Wait();
-                    if (resposta.Result.IsSuccessStatusCode)
-                    {
-                        var retorno = resposta.Result.Content.ReadAsStringAsync();
-                        disciplinaCriada = JsonConvert.DeserializeObject<Disciplina>(retorno.Result);
-                    }
+                    return true;
                 }
-            }
-            catch (Exception e)
-            {
-
-                throw new Exception(e.Message);
+                return false;
             }
         }
 
-        public Disciplina ObterDisciplinaId(int idDisciplina)
+        public async Task<Disciplina> ObterDisciplinaId(int idDisciplina)
         {
-            var disciplinaCriada = new Disciplina();
-            try
+            using (HttpClient cliente = new HttpClient())
             {
-                disciplinaCriada.IdDisciplina = idDisciplina;
+                Disciplina disciplina = null;
+                HttpResponseMessage resposta = await cliente.GetAsync(_urlAPI + "ObterDisciplina/" + idDisciplina);
 
-                using (var client = new HttpClient())
+                if (resposta.IsSuccessStatusCode)
                 {
-                    string jsonObjeto = JsonConvert.SerializeObject(disciplinaCriada);
-                    var conteudo = new StringContent(jsonObjeto, Encoding.UTF8, "application/json");
-                    var resposta = client.PostAsync(urlAPI + "ObterDisciplinaId/", conteudo);
-
-                    resposta.Wait();
-
-                    if (resposta.Result.IsSuccessStatusCode)
-                    {
-                        var retorno = resposta.Result.Content.ReadAsStringAsync();
-                        disciplinaCriada = JsonConvert.DeserializeObject<Disciplina>(retorno.Result);
-                    }
+                    string jsonObjeto = await resposta.Content.ReadAsStringAsync();
+                    disciplina = JsonSerializer.Deserialize<Disciplina>(jsonObjeto);
                 }
+                return disciplina;
             }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-            return disciplinaCriada;
         }
 
-        public List<Disciplina> ObterDisciplinas()
+        public async Task<List<Disciplina>> ObterDisciplinas()
         {
-            var listaDeDisciplinas = new List<Disciplina>();
-            try
+            using (HttpClient cliente = new HttpClient())
             {
+                List<Disciplina> disciplinas = new List<Disciplina>();
 
-                using (var client = new HttpClient())
+                HttpResponseMessage resposta = await cliente.GetAsync(_urlAPI + "ObterDisciplinas");
+
+                if (resposta.IsSuccessStatusCode)
                 {
-                    var resposta = client.GetStringAsync(urlAPI + "ObterDisciplinas");
-                    resposta.Wait();
-
-                    if (resposta.Result != null)
-                    {
-                        listaDeDisciplinas = JsonConvert.DeserializeObject<Disciplina[]>(resposta.Result).ToList();
-                    }
+                    string conteudo = await resposta.Content.ReadAsStringAsync();
+                    disciplinas = JsonSerializer.Deserialize<List<Disciplina>>(conteudo);
                 }
+                return disciplinas;
             }
-            catch (Exception e)
-            {
-
-                throw new Exception(e.Message);
-            }
-            return listaDeDisciplinas;
         }
     }
 }
