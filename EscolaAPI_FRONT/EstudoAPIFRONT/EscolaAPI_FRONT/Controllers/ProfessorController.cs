@@ -32,10 +32,10 @@ namespace EscolaAPI_FRONT.Controllers
         }
 
         // GET: ProfessorController/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
             return View();
-        }
+;        }
 
         // POST: ProfessorController/Create
         [HttpPost]

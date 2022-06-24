@@ -32,7 +32,7 @@ namespace EscolaAPI_FRONT.Repository
             {
                 string jsonObjeto = JsonSerializer.Serialize(alunoDTO);
                 StringContent conteudo = new StringContent(jsonObjeto, Encoding.UTF8, "application/json");
-                HttpResponseMessage resposta = await client.PostAsync(_urlAPI + "CadastrarAluno", conteudo);
+                HttpResponseMessage resposta = await client.PostAsync(_urlAPI + "Cadastrar", conteudo);
 
                 if (resposta.IsSuccessStatusCode)
                 {

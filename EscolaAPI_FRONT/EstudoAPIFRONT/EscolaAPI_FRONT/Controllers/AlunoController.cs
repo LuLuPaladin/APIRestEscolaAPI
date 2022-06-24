@@ -24,7 +24,7 @@ namespace EscolaAPI_FRONT.Controllers
 
         // GET: AlunoController
         [HttpGet("ObterAlunos")]
-        public async Task< ActionResult> Index()
+        public async Task<ActionResult> Index()
         {
             IEnumerable<AlunoDTO> listaAlunos = await _alunoRepository.ObterAlunos();
             return View(listaAlunos);
@@ -36,26 +36,27 @@ namespace EscolaAPI_FRONT.Controllers
             return View();
         }
 
-        [HttpGet("CriarAluno")]
-
-        public ActionResult Create()
+        [HttpGet("CadastrarAluno")]
+        public ActionResult CadastrarAluno()
         {
-            return View("CriarAluno");
+            return View("CadastrarAluno");
         }
 
         // POST: AlunoController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        [HttpPost("CadastrarAluno")]
+        public async Task<ActionResult> CadastrarAluno(AlunoDTO alunoDTO)
         {
-            try
+
+            bool response = await _alunoRepository.CadastrarAluno(alunoDTO);
+
+            if (response == false)
             {
-                return RedirectToAction(nameof(Index));
+
+                return View("CadastrarAluno");
             }
-            catch
-            {
-                return View();
-            }
+
+            return RedirectToAction("Index");
+
         }
 
         // GET: AlunoController/Edit/5
@@ -101,9 +102,12 @@ namespace EscolaAPI_FRONT.Controllers
         }
 
         // GET: AlunoController/Delete/5
-        public ActionResult Delete(int id)
+        [HttpGet("DeletarAluno/{idAluno}")]
+        public async Task<ActionResult> Delete(int idAluno)
         {
-            return View();
+            Aluno aluno = await _alunoRepository.ObterAlunoId(idAluno);
+
+            return View("DeletarAluno", aluno);
         }
 
         // POST: AlunoController/Delete/5
