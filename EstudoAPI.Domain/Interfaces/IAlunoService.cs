@@ -11,6 +11,5 @@ namespace EstudoAPI.Domain.Interfaces
         Aluno ObterAluno(int idAluno);
         bool EditarAluno(int idAluno, AlunoDTO alunoDTO);
         bool DeletarAluno(int idAluno);
-        
     }
 }

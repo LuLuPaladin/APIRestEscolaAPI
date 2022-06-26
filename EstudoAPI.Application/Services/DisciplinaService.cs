@@ -2,6 +2,7 @@
 using EstudoAPI.Domain.Entities;
 using EstudoAPI.Domain.Interfaces;
 using System;
+using System.Collections.Generic;
 
 namespace EstudoAPI.Application.Services
 {
@@ -62,6 +63,18 @@ namespace EstudoAPI.Application.Services
             Disciplina disciplina = _disciplinaRepository.ObterDisciplina(idDisciplina);
             return disciplina;
         }
-        
+
+        public List<Disciplina> ObterDisciplinas()
+        {
+            try
+            {
+                List<Disciplina> listaDisciplina = _disciplinaRepository.ObterDisciplinas();
+                return listaDisciplina;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

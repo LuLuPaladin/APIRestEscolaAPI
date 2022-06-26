@@ -120,6 +120,7 @@ namespace EstudoAPI.Data.Repositories
                 return disciplinas;
             }
         }
+
     }
 }
 

@@ -1,4 +1,7 @@
-﻿using EscolaAPI_FRONT.Interfaces;
+﻿using EscolaAPI_FRONT.Adapter;
+using EscolaAPI_FRONT.DTO;
+using EscolaAPI_FRONT.Interfaces;
+using EscolaAPI_FRONT.Models;
 using EscolaAPI_FRONT.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +16,13 @@ namespace EscolaAPI_FRONT.Controllers
     public class ProfessorController : Controller
     {
         private readonly IProfessorRepository _professorRepository;
+        private readonly IDisciplinaRepository _disciplinaRepository;
 
-        public ProfessorController(IProfessorRepository professorRepository)
+
+        public ProfessorController(IProfessorRepository professorRepository, IDisciplinaRepository disciplinaRepository)
         {
             _professorRepository = professorRepository;
+            _disciplinaRepository = disciplinaRepository;
         }
         // GET: ProfessorController
         [HttpGet("ObterProfessores")]
@@ -35,7 +41,8 @@ namespace EscolaAPI_FRONT.Controllers
         public async Task<ActionResult> Create()
         {
             return View();
-;        }
+            ;
+        }
 
         // POST: ProfessorController/Create
         [HttpPost]
@@ -54,24 +61,38 @@ namespace EscolaAPI_FRONT.Controllers
 
         // GET: ProfessorController/Edit/5
         [HttpGet("EditarProfessor/{idProfessor}")]
-        public ActionResult Edit(int idProfessor)
-        {
-            return View();
-        }
-
-        // POST: ProfessorController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int idProfessor)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                List<Disciplina> disciplinas = await _disciplinaRepository.ObterDisciplinas();
+                Professor professor = await _professorRepository.ObterProfessorId(idProfessor);
+                ViewBag.Disciplinas = disciplinas;
+                return View("EditarProfessor", professor.ToProfessorRequestDTO());
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                throw new Exception(e.Message);
             }
+        }
+
+        // POST: ProfessorController/Edit/5
+        [HttpPost("EditarProfessor")]
+        public async Task<ActionResult> EditarProfessor(ProfessorDTO professorDTO)
+        {
+            bool response = await _professorRepository.EditarProfessor(new ProfessorDTO
+            {
+                Nome = professorDTO.Nome,
+                IdProfessor = professorDTO.IdProfessor,
+                IdDisciplina = professorDTO.IdDisciplina
+            });
+
+            if (response == false)
+            {
+                return View("EditarProfessor");
+            }
+            return RedirectToAction(nameof(Index));
+
         }
 
         // GET: ProfessorController/Delete/5

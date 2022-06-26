@@ -10,5 +10,6 @@ namespace EstudoAPI.Domain.Interfaces
         Disciplina ObterDisciplina(int idDisciplina);
         void EditarDisciplina(Disciplina disciplina);
         void DeletarDisciplina(int idDisciplina);
+
     }
 }

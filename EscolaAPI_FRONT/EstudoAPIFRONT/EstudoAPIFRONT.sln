@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32428.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EscolaAPI_FRONT", "EscolaAPI_FRONT\EscolaAPI_FRONT.csproj", "{A354298A-8959-4423-9DF4-5DC442ED7DB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EscolaAPI_FRONT", "EscolaAPI_FRONT\EscolaAPI_FRONT.csproj", "{A354298A-8959-4423-9DF4-5DC442ED7DB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Presentation", "1-Presentation", "{45167110-AA64-4C9E-BE68-F23A025A69EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +20,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A354298A-8959-4423-9DF4-5DC442ED7DB0} = {45167110-AA64-4C9E-BE68-F23A025A69EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {869FC757-DCE4-4626-AEA5-2B5C7697D187}

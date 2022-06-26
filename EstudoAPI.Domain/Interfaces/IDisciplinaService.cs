@@ -1,5 +1,6 @@
 ﻿using EstudoAPI.Domain.DTOs;
 using EstudoAPI.Domain.Entities;
+using System.Collections.Generic;
 
 namespace EstudoAPI.Domain.Interfaces
 {
@@ -9,6 +10,6 @@ namespace EstudoAPI.Domain.Interfaces
         Disciplina ObterDisciplina(int idDisciplina);
         bool EditarDisciplina(int idDisciplina, DisciplinaDTO disciplinaDTO);
         bool DeletarDisciplina(int idDisciplina);
-        
+        List<Disciplina> ObterDisciplinas();
     }
 }

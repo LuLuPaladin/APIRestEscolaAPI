@@ -8,7 +8,13 @@ namespace EscolaAPI_FRONT.Adapter
     {
         public static ProfessorDTO ToProfessorRequestDTO(this Professor professor)
         {
-            return new ProfessorDTO { IdProfessor = professor.IdProfessor, Nome = professor.Nome, NomeDisciplina = professor.Disciplina.Nome };
+            return new ProfessorDTO
+            {
+                IdProfessor = professor.IdProfessor,
+                Nome = professor.Nome,
+                NomeDisciplina = professor.Disciplina.Nome,
+                IdDisciplina = professor.Disciplina.IdDisciplina
+            };
         }
 
         public static List<ProfessorDTO> ToProfessoresListDTO(this List<Professor> professores)

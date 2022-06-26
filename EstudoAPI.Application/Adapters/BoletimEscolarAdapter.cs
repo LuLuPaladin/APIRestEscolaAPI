@@ -12,6 +12,7 @@ namespace EstudoAPI.Application.Adapters
         {
             return new BoletimEscolarResponseDTO
             (
+                boletimEscolar.IdBoletimEscolar,
                 boletimEscolar.Aluno.IdAluno,
                 boletimEscolar.Aluno.Nome,
                 boletimEscolar.Disciplina.Nome,

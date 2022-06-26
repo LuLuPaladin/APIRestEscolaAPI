@@ -1,4 +1,5 @@
-﻿using EscolaAPI_FRONT.DTO;
+﻿using EscolaAPI_FRONT.Adapter;
+using EscolaAPI_FRONT.DTO;
 using EscolaAPI_FRONT.Interfaces;
 using EscolaAPI_FRONT.Models;
 using Microsoft.AspNetCore.Http;
@@ -15,11 +16,12 @@ namespace EscolaAPI_FRONT.Controllers
 
     public class AlunoController : Controller
     {
-
         private readonly IAlunoRepository _alunoRepository;
-        public AlunoController(IAlunoRepository alunoRepository)
+        private readonly IBoletimEscolarRepository _boletimEscolarRepository;
+        public AlunoController(IAlunoRepository alunoRepository, IBoletimEscolarRepository boletimEscolarRepository)
         {
             _alunoRepository = alunoRepository;
+            _boletimEscolarRepository = boletimEscolarRepository;
         }
 
         // GET: AlunoController
@@ -81,22 +83,21 @@ namespace EscolaAPI_FRONT.Controllers
         // POST: AlunoController/Edit/5
 
         [HttpPost("EditarAluno")]
-        public async Task<ActionResult> EditarAluno(AlunoDTO aluno)
+        public async Task<ActionResult> EditarAluno(AlunoDTO alunoDTO)
         {
             try
             {
-                bool response = await _alunoRepository.EditarAluno(aluno.IdAluno, new AlunoDTO { Nome = aluno.Nome });
+                bool response = await _alunoRepository.EditarAluno(alunoDTO.IdAluno, new AlunoDTO { Nome = alunoDTO.Nome });
 
                 if (response)
                 {
                     return RedirectToAction(nameof(Index));
                     //RedirectToAction("EditarAluno/", new RouteValueDictionary ( new  { idAluno = aluno.IdAluno } ));
                 }
-
             }
-            catch
+            catch (Exception e)
             {
-                return RedirectToAction("Index");
+                throw new Exception(e.Message);
             }
             return RedirectToAction("Index");
         }
@@ -124,5 +125,31 @@ namespace EscolaAPI_FRONT.Controllers
                 return View();
             }
         }
+
+        [HttpGet("BoletimEscolar/{idAluno}")]
+        public async Task<ActionResult> ObterBoletimEscolar(int idAluno)
+        {
+            try
+            {
+                List<BoletimEscolarDTO> boletimEscolarDTO = (await _boletimEscolarRepository.ObterBoletinsAluno(idAluno)).ToBoletinsEscolaresDTO();
+                if (boletimEscolarDTO.Count > 0)
+                {
+                    return View("ObterBoletimEscolar", boletimEscolarDTO);
+                }
+                return RedirectToAction(nameof(Index));
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        [HttpGet("CriarBoletimEscolar")]
+        public async Task<ActionResult> CriarBoletimEscolar()
+        {
+            return View("CriarBoletimEscolar");
+        }
+
     }
 }

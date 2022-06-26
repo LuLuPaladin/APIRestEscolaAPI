@@ -27,7 +27,8 @@ namespace EscolaAPI_FRONT
         {
             services.AddScoped<IAlunoRepository, AlunoRepository>();
             services.AddScoped<IProfessorRepository, ProfessorRepository>();
-            
+            services.AddScoped<IBoletimEscolarRepository, BoletimEscolarRepository>();
+            services.AddScoped<IDisciplinaRepository, DisciplinaRepository>();
             services.AddControllersWithViews();
         }
 

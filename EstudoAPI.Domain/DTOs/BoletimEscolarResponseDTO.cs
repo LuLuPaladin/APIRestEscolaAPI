@@ -4,6 +4,7 @@ namespace EstudoAPI.Domain.DTOs
 {
     public class BoletimEscolarResponseDTO
     {
+        public int IdBoletimEscolar { get; set; }
         public int IdAluno { get; set; }
         public string NomeAluno { get; set; }
         public string NomeDisciplina { get; set; }
@@ -13,8 +14,9 @@ namespace EstudoAPI.Domain.DTOs
         public string DescricaoBoletimEscolar { get; set; }
         public string DataNota { get; set; }
 
-        public BoletimEscolarResponseDTO(int idAluno, string nomeAluno, string nomeDisciplina, int idProfessor, string nomeProfessor, decimal notaDoAluno, string descricaoBoletimEscolar, DateTime dataNota)
+        public BoletimEscolarResponseDTO(int idBoletimEscolar, int idAluno, string nomeAluno, string nomeDisciplina, int idProfessor, string nomeProfessor, decimal notaDoAluno, string descricaoBoletimEscolar, DateTime dataNota)
         {
+            IdBoletimEscolar = idBoletimEscolar;
             IdAluno = idAluno;
             NomeAluno = nomeAluno;
             NomeDisciplina = nomeDisciplina;

@@ -84,7 +84,6 @@ namespace EscolaAPI_FRONT.Repository
                     Aluno aluno = null;
                     var resposta = await client.GetAsync(_urlAPI + idAluno);
 
-
                     if (resposta.IsSuccessStatusCode)
                     {
                         var test = await resposta.Content.ReadAsStringAsync();

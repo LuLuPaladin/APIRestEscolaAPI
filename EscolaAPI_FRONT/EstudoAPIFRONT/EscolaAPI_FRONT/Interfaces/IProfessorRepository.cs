@@ -9,7 +9,7 @@ namespace EscolaAPI_FRONT.Interfaces
     {
         Task<bool> CadastrarProfessor(ProfessorDTO professorDTO);
         Task<Professor> ObterProfessorId(int idProfessor);
-        Task<bool> EditarProfessor(Professor professor);
+        Task<bool> EditarProfessor(ProfessorDTO professorDTO);
         Task<bool> DeletarProfessor(int idProfessor);
         Task<bool> AssociarAluno(int idAluno, int idProfessor);
         Task<bool> DesassociarAluno(int idAluno, int idProfessor);

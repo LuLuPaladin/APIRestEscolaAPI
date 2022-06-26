@@ -102,7 +102,6 @@ C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EscolaAPI_FRONT\Es
 C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EscolaAPI_FRONT\EstudoAPIFRONT\EscolaAPI_FRONT\obj\Debug\net5.0\Razor\Views\Aluno\EditarAluno.cshtml.g.cs
 C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EscolaAPI_FRONT\EstudoAPIFRONT\EscolaAPI_FRONT\obj\Debug\net5.0\Razor\Views\Aluno\Index.cshtml.g.cs
 C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EscolaAPI_FRONT\EstudoAPIFRONT\EscolaAPI_FRONT\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EscolaAPI_FRONT\EstudoAPIFRONT\EscolaAPI_FRONT\obj\Debug\net5.0\Razor\Views\Professor\Edit.cshtml.g.cs
 C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EscolaAPI_FRONT\EstudoAPIFRONT\EscolaAPI_FRONT\obj\Debug\net5.0\Razor\Views\Professor\Index.cshtml.g.cs
 C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EscolaAPI_FRONT\EstudoAPIFRONT\EscolaAPI_FRONT\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EscolaAPI_FRONT\EstudoAPIFRONT\EscolaAPI_FRONT\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -119,3 +118,5 @@ C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EscolaAPI_FRONT\Es
 C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EscolaAPI_FRONT\EstudoAPIFRONT\EscolaAPI_FRONT\obj\Debug\net5.0\EscolaAPI_FRONT.genruntimeconfig.cache
 C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EscolaAPI_FRONT\EstudoAPIFRONT\EscolaAPI_FRONT\obj\Debug\net5.0\Razor\Views\Aluno\DeletarAluno.cshtml.g.cs
 C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EscolaAPI_FRONT\EstudoAPIFRONT\EscolaAPI_FRONT\obj\Debug\net5.0\Razor\Views\Aluno\CadastrarAluno.cshtml.g.cs
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EscolaAPI_FRONT\EstudoAPIFRONT\EscolaAPI_FRONT\obj\Debug\net5.0\Razor\Views\Aluno\ObterBoletimEscolar.cshtml.g.cs
+C:\Users\lucia\OneDrive\Área de Trabalho\EscolaAPI\EstudoAPI\EscolaAPI_FRONT\EstudoAPIFRONT\EscolaAPI_FRONT\obj\Debug\net5.0\Razor\Views\Professor\EditarProfessor.cshtml.g.cs

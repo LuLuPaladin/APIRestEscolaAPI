@@ -2,6 +2,7 @@
 using EstudoAPI.Domain.Entities;
 using EstudoAPI.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace EscolaAPI.Controllers
 {
@@ -67,6 +68,18 @@ namespace EscolaAPI.Controllers
             }
 
             return BadRequest();
+        }
+
+        [HttpGet("ObterDisciplinas")]
+        public ActionResult<List<Disciplina>> ObterDisciplinas()
+        {
+            List<Disciplina> listaDisciplina = _disciplinaService.ObterDisciplinas();
+
+            if (listaDisciplina == null)
+            {
+                return BadRequest();
+            }
+            return Ok(listaDisciplina);
         }
     }
 }

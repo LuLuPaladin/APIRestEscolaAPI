@@ -175,7 +175,7 @@ namespace EstudoAPI.Data.Repositories
         {
             using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
             {
-                SqlCommand sqlCommand = new SqlCommand(@" SELECT b.DataNota, b.DescricaoBoletimEscolar, b.NotaBoletimEscolar, a.IdAluno,
+                SqlCommand sqlCommand = new SqlCommand(@" SELECT b.IdBoletimEscolar, b.DataNota, b.DescricaoBoletimEscolar, b.NotaBoletimEscolar, a.IdAluno,
                                                           a.Nome as Nome_do_Aluno,
                                                           p.Nome as Nome_do_Professor, p.IdProfessor,
                                                           d.Nome as Nome_da_Disciplina, d.IdDisciplina
@@ -195,6 +195,7 @@ namespace EstudoAPI.Data.Repositories
                 {
                     boletimEscolar.Add(new BoletimEscolar
                     {
+                        IdBoletimEscolar = Convert.ToInt32(sqlDataReader["IdBoletimEscolar"]),
                         DescricaoBoletimEscolar = sqlDataReader["DescricaoBoletimEscolar"].ToString(),
                         NotaBoletimEscolar = Convert.ToInt32(sqlDataReader["NotaBoletimEscolar"]),
                         DataNota = DateTime.Parse(sqlDataReader["DataNota"].ToString()),
@@ -217,7 +218,7 @@ namespace EstudoAPI.Data.Repositories
                             IdDisciplina = Convert.ToInt32(sqlDataReader["IdDisciplina"])
                         }
                     }
-                    );
+                    ) ;
                 }
 
                 sqlConnection.Close();

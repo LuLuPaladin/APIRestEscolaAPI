@@ -111,15 +111,15 @@ namespace EscolaAPI_FRONT.Repository
             }
         }
 
-        public async Task<bool> EditarProfessor(Professor professor)
+        public async Task<bool> EditarProfessor(ProfessorDTO professorDTO)
         {
             try
             {
                 using (var client = new HttpClient())
                 {
-                    string jsonObjeto = JsonSerializer.Serialize(professor.ToProfessorRequestDTO());
+                    string jsonObjeto = JsonSerializer.Serialize(professorDTO);
                     var conteudo = new StringContent(jsonObjeto, Encoding.UTF8, "application/json");
-                    var resposta = await client.PutAsync(_urlAPI + "EditarProfessor/" + professor.IdProfessor, conteudo);
+                    var resposta = await client.PutAsync(_urlAPI + "EditarProfessor/" + professorDTO.IdProfessor, conteudo);
 
                     if (resposta.IsSuccessStatusCode)
                     {
