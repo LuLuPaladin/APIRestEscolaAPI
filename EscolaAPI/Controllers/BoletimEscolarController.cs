@@ -43,7 +43,7 @@ namespace EscolaAPI.Controllers
             return Ok(boletimEscolarDTO);
         }
 
-        [HttpPost]
+        [HttpPost("CadastrarBoletimEscolar")]
         public ActionResult CadastrarBoletimEscolar([FromBody] BoletimEscolarDTO boletimEscolarDTO)
         {
             var bolResponse = _boletimEscolarService.CadastrarBoletimEscolar(boletimEscolarDTO);

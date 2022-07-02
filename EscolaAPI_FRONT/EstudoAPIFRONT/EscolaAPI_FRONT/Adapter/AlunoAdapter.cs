@@ -12,7 +12,7 @@ namespace EscolaAPI_FRONT.Adapter
         }
         public static AlunoDTO ToAlunoDTO(this Aluno aluno)
         {
-            return new AlunoDTO { Nome = aluno.Nome, IdAluno = aluno.IdAluno };
+            return new AlunoDTO { Nome = aluno.Nome, IdAluno = aluno.IdAluno }; 
         }
         /// <summary>
         /// Este método converte uma lista de Aluno para uma Lista de AlunoDTO

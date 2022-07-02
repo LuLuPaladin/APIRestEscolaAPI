@@ -17,7 +17,7 @@ namespace EscolaAPI_FRONT.Controllers
     {
         private readonly IProfessorRepository _professorRepository;
         private readonly IDisciplinaRepository _disciplinaRepository;
-
+    
 
         public ProfessorController(IProfessorRepository professorRepository, IDisciplinaRepository disciplinaRepository)
         {
@@ -38,10 +38,10 @@ namespace EscolaAPI_FRONT.Controllers
         }
 
         // GET: ProfessorController/Create
-        public async Task<ActionResult> Create()
+        public  ActionResult Create()
         {
             return View();
-            ;
+            
         }
 
         // POST: ProfessorController/Create

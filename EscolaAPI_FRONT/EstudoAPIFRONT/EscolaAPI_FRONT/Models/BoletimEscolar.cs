@@ -13,6 +13,8 @@ namespace EscolaAPI_FRONT.Models
         public string NomeAluno { get; set; }
         [JsonPropertyName("nomeDisciplina")]
         public string NomeDisciplina { get; set; }
+        [JsonPropertyName("idDisciplina")]
+        public int IdDisciplina { get; set; }
         [JsonPropertyName("idProfessor")]
         public int IdProfessor { get; set; }
         [JsonPropertyName("nomeProfessor")]

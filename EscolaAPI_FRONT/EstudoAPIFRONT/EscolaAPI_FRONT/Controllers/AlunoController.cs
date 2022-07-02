@@ -18,10 +18,14 @@ namespace EscolaAPI_FRONT.Controllers
     {
         private readonly IAlunoRepository _alunoRepository;
         private readonly IBoletimEscolarRepository _boletimEscolarRepository;
-        public AlunoController(IAlunoRepository alunoRepository, IBoletimEscolarRepository boletimEscolarRepository)
+        private readonly IProfessorRepository _professorRepository;
+
+        public AlunoController(IAlunoRepository alunoRepository, IBoletimEscolarRepository boletimEscolarRepository,
+            IProfessorRepository professorRepository)
         {
             _alunoRepository = alunoRepository;
             _boletimEscolarRepository = boletimEscolarRepository;
+            _professorRepository = professorRepository;
         }
 
         // GET: AlunoController
@@ -145,11 +149,30 @@ namespace EscolaAPI_FRONT.Controllers
             }
         }
 
-        [HttpGet("CriarBoletimEscolar")]
-        public async Task<ActionResult> CriarBoletimEscolar()
+        [HttpGet("CriarBoletimEscolar/{idAluno}")]
+        public async Task<ActionResult> CriarBoletimEscolar(int idAluno)
         {
+            
+            List<ProfessorDTO> professores = await _professorRepository.ObterProfessores();
+            ViewBag.Professores = professores;
+            ViewBag.IdAluno = idAluno;
+            ViewBag.NomeAluno = (await _alunoRepository.ObterAlunoId(idAluno)).Nome;
             return View("CriarBoletimEscolar");
         }
 
+        [HttpPost("CriarBoletimEscolarPost")]
+        public async Task<ActionResult> CriarBoletimEscolarPost(BoletimEscolarRequestDTO boletimEscolarRequestDTO)
+        {
+
+
+            bool response = await _boletimEscolarRepository.CadastrarBoletimEscolar(boletimEscolarRequestDTO.ToBoletimEscolarResponseDTO());
+            
+            if (response)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

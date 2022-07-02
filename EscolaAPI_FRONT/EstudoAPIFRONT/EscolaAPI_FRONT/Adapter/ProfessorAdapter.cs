@@ -27,5 +27,28 @@ namespace EscolaAPI_FRONT.Adapter
 
             return professorListDTO;
         }
+
+        public static Professor ToProfessorResponseDTO(this ProfessorDTO professorDTO)
+        {
+            return new Professor
+            {
+                Nome = professorDTO.Nome,
+                IdProfessor = professorDTO.IdProfessor
+            };
+        }
+
+        public static List<Professor> ProfessoresResponseDTO(this List<ProfessorDTO> professorDTO)
+        {
+            List<Professor> professores = new List<Professor>();
+
+            foreach (var professoresDTO in professorDTO)
+            {
+                professores.Add(new Professor {Nome = professoresDTO.Nome, IdProfessor = professoresDTO.IdProfessor});
+            }
+
+            return professores;
+        }
+
+
     }
 }

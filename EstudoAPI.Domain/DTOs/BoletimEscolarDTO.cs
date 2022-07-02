@@ -11,6 +11,5 @@ namespace EstudoAPI.Domain.DTOs
         public int IdAluno { get; set; }
         public int IdProfessor { get; set; }
         public int IdDisciplina { get; set; }
-        public int IdBoletimEscolar { get; set; }
     }
 }

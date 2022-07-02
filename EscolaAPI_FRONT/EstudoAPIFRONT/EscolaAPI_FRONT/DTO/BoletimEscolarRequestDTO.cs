@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace EscolaAPI_FRONT.DTO
@@ -13,17 +14,20 @@ namespace EscolaAPI_FRONT.DTO
         //Descricao tambem
         public BoletimEscolarRequestDTO()
         {
-            DataNota = DateTime.Now;
+            DataBoletim = DateTime.Now;
         }
 
-        public decimal Nota { get; set; }
+        [JsonPropertyName("descricaoBoletim")]
+        public string DescricaoBoletim { get; set; }
+        [JsonPropertyName("dataBoletim")]
+        public DateTime DataBoletim { get; set; }
+        [JsonPropertyName("notaBoletim")]
+        public decimal NotaBoletim { get; set; }
+        [JsonPropertyName("idAluno")]
         public int IdAluno { get; set; }
+        [JsonPropertyName("idProfessor")]
         public int IdProfessor { get; set; }
+        [JsonPropertyName("idDisciplina")]
         public int IdDisciplina { get; set; }
-        public string Descricao { get; set; }
-        // nao colocar na tela
-        public DateTime DataNota { get; set; }
-
-        
     }
 }

@@ -1,0 +1,84 @@
+﻿@model EscolaAPI_FRONT.DTO.BoletimEscolarRequestDTO
+
+
+@{
+    ViewData["Title"] = "Novo Boletim Escolar";
+    List<EscolaAPI_FRONT.DTO.ProfessorDTO> professores = ViewBag.Professores;
+    int idAluno = ViewBag.IdAluno;
+    string nomeAluno = ViewBag.NomeAluno;
+}
+
+
+<h1>CriarBoletimEscolar @nomeAluno</h1>
+
+<h4>Adicione dados ao aluno</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form action="../CriarBoletimEscolarPost" method="post" novalidate="novalidate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NotaBoletim" class="control-label"></label>
+                <input asp-for="NotaBoletim" class="form-control" />
+                <span asp-validation-for="NotaBoletim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="IdAluno" type="hidden" value="@idAluno" class="form-control" />
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="IdProfessor" class="control-label">Professor</label>
+                <select asp-for="IdProfessor" class="form-control">
+                    <option selected value="0">Selecione um Professor</option>
+                    @foreach (var professor in professores)
+                    {
+                        <option value="@professor.IdProfessor">@professor.Nome</option>
+                    }
+                </select> 
+            </div>
+            <div class="form-group" id="bloco-disciplina" style="display:none;">
+
+            </div>
+            <div class="form-group">
+                <label asp-for="DescricaoBoletim" class="control-label"></label>
+                <input asp-for="DescricaoBoletim" class="form-control" />
+                <span asp-validation-for="DescricaoBoletim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+        @foreach (var professor in professores)
+        {
+            <div class="form-group" id="modelo-bloco-disciplina-@professor.IdProfessor" style="display:none;">
+                <label class="control-label">Disciplina</label>
+                <input name="IdDisciplina" value="@professor.IdDisciplina " type="hidden" asp-for="@professor.IdDisciplina" class="form-control" />
+                <input asp-for="@professor.NomeDisciplina" disabled="disabled" class="form-control" />
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $("#IdProfessor").change(function () {
+            if ($("#IdProfessor").val() > 0) {
+                var idProfessor = $("#IdProfessor").val();
+                $("#bloco-disciplina").empty();
+                $("#modelo-bloco-disciplina-" + idProfessor).clone().children().appendTo("#bloco-disciplina");
+                $("#bloco-disciplina").show();
+            }
+            else {
+                $("#bloco-disciplina").empty();
+                $("#bloco-disciplina").hide();
+            }
+        });
+
+    </script>
+}

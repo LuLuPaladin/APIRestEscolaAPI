@@ -1,4 +1,5 @@
-﻿using EscolaAPI_FRONT.Interfaces;
+﻿using EscolaAPI_FRONT.Adapter;
+using EscolaAPI_FRONT.Interfaces;
 using EscolaAPI_FRONT.Models;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -38,7 +39,7 @@ namespace EscolaAPI_FRONT.Repository
         {
             using (HttpClient cliente = new HttpClient())
             {
-                string JsonObjeto = JsonSerializer.Serialize(boletimEscolar);
+                string JsonObjeto = JsonSerializer.Serialize(boletimEscolar.ToBoletimEscolarRequestDTO());
                 StringContent conteudoSerializado = new StringContent(JsonObjeto, Encoding.UTF8, "application/Json");
                 HttpResponseMessage resposta = await cliente.PostAsync(_urlAPI + "CadastrarBoletimEscolar", conteudoSerializado);
 
