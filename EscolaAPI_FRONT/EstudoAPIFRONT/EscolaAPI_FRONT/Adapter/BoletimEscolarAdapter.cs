@@ -8,7 +8,7 @@ namespace EscolaAPI_FRONT.Adapter
 {
     public static class BoletimEscolarAdapter
     {
-        public static BoletimEscolarDTO ToBoletimEscolarResponseDTO(this BoletimEscolar boletimEscolar)
+        public static BoletimEscolarDTO ToBoletimEscolarResponseDTOs(this BoletimEscolar boletimEscolar)
         {
             return new BoletimEscolarDTO
             {
@@ -69,9 +69,9 @@ namespace EscolaAPI_FRONT.Adapter
         //    return listBoletimEscolarDTO;
         //}
 
-        public static List<BoletimEscolarDTO> ToBoletinsEscolaresDTO(this List<BoletimEscolar> boletinsEscolares)
+        public static List<BoletimEscolarDTO> ToBoletinsEscolaresDTOs(this List<BoletimEscolar> boletinsEscolares)
         {
-            return boletinsEscolares.Select(b => b.ToBoletimEscolarResponseDTO()).ToList();
+            return boletinsEscolares.Select(b => b.ToBoletimEscolarResponseDTOs()).ToList();
         }
     }
 }

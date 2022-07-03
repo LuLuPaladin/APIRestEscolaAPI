@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Routing;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace EscolaAPI_FRONT.Controllers
@@ -135,13 +136,19 @@ namespace EscolaAPI_FRONT.Controllers
         {
             try
             {
-                List<BoletimEscolarDTO> boletimEscolarDTO = (await _boletimEscolarRepository.ObterBoletinsAluno(idAluno)).ToBoletinsEscolaresDTO();
-                if (boletimEscolarDTO.Count > 0)
+                List<BoletimEscolarDTO> boletimEscolarDTO = (await _boletimEscolarRepository.ObterBoletinsAluno(idAluno)).ToBoletinsEscolaresDTOs();
+                if (boletimEscolarDTO == null || !boletimEscolarDTO.Any())
                 {
-                    return View("ObterBoletimEscolar", boletimEscolarDTO);
+                    Aluno alunoBoletim = await _alunoRepository.ObterAlunoId(idAluno);
+                    ViewBag.IdAluno = alunoBoletim.IdAluno;
+                    ViewBag.NomeAluno = alunoBoletim.Nome;
                 }
-                return RedirectToAction(nameof(Index));
-
+                else
+                {
+                    ViewBag.IdAluno = boletimEscolarDTO.First().IdAluno;
+                    ViewBag.NomeAluno = boletimEscolarDTO.First().NomeAluno;
+                }
+                return View("ObterBoletimEscolar", boletimEscolarDTO);
             }
             catch (Exception e)
             {
@@ -152,7 +159,7 @@ namespace EscolaAPI_FRONT.Controllers
         [HttpGet("CriarBoletimEscolar/{idAluno}")]
         public async Task<ActionResult> CriarBoletimEscolar(int idAluno)
         {
-            
+
             List<ProfessorDTO> professores = await _professorRepository.ObterProfessores();
             ViewBag.Professores = professores;
             ViewBag.IdAluno = idAluno;
@@ -166,7 +173,7 @@ namespace EscolaAPI_FRONT.Controllers
 
 
             bool response = await _boletimEscolarRepository.CadastrarBoletimEscolar(boletimEscolarRequestDTO.ToBoletimEscolarResponseDTO());
-            
+
             if (response)
             {
                 return RedirectToAction(nameof(Index));

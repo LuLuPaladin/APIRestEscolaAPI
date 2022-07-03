@@ -4,7 +4,7 @@ namespace EscolaAPI_FRONT.DTO
 {
     public class AlunoDTO
     {
-        [JsonPropertyName("idProfessor")]
+        [JsonPropertyName("idAluno")]
         public int IdAluno { get; set; }
         [JsonPropertyName("nome")]
         public string Nome { get; set; }

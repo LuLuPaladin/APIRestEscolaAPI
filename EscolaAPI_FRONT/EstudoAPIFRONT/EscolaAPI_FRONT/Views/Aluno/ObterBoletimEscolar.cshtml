@@ -4,10 +4,10 @@
     ViewData["Title"] = "BoletimEscolar";
 }
 
-<h1>Boletim Escolar do @Model.First().NomeAluno</h1>
+<h1>Boletim Escolar do @ViewBag.NomeAluno</h1>
 
 <p>
-    <a href="../CriarBoletimEscolar/@Model.First().IdAluno">Criar Novo Boletim Escolar</a>
+    <a href="../CriarBoletimEscolar/@ViewBag.IdAluno">Criar Novo Boletim Escolar</a>
 </p>
 <table class="table">
     <thead>
